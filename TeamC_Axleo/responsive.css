@@ -1,0 +1,76 @@
+/* Medium screens (tablets, 768px and below) */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contact-form {
+        padding: 40px; /* Reduces padding on smaller screens */
+    }
+}
+
+/* Small screens (mobile, 480px and below) */
+@media (max-width: 480px) {
+    .contact-info {
+        flex-basis: 100%; /* Full width for each section */
+    }
+
+    .contact-form {
+        padding: 20px; /* Further reduce padding */
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 8px; /* Smaller padding for inputs */
+    }
+
+    .contact-form button {
+        padding: 10px;
+        font-size: 14px; /* Smaller font size for button text */
+    }
+}
+/* Media Queries for 480px and below */
+@media (max-width: 480px) {
+    footer h2 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    footer .newsletter {
+        flex-direction: column; /* Stack the input and button vertically */
+    }
+
+    footer .newsletter input[type="email"] {
+        width: 100%; /* Full width */
+        margin-bottom: 10px; /* Space between input and button */
+    }
+
+    footer .newsletter button {
+        width: 100%; /* Full width */
+    }
+
+    footer .footer-content {
+        flex-direction: column; /* Stack sections vertically */
+        padding: 20px;
+    }
+
+    footer .company,
+    footer .solutions,
+    footer .social-media,
+    footer .contact {
+        flex: none; /* Remove flex-grow */
+        width: 100%; /* Full width */
+        text-align: center; /* Center text */
+    }
+
+    footer .social-media {
+        justify-content: center; /* Center social media icons */
+    }
+
+    footer .copyright {
+        padding: 10px 0;
+        font-size: 14px; /* Smaller font size */
+    }
+}
