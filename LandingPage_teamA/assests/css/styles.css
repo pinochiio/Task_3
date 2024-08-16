@@ -1,0 +1,361 @@
+body{
+    background-color: #eeeeee;
+
+}
+.feature-icon {
+    margin-bottom: 15px;
+    color: #ff0077; /* Customize icon color */
+}
+
+.feature-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    color: #303030;
+    margin-bottom: 10px;
+}
+
+.feature-description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.phone-placeholder {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    background-color: #eeeeee;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.phone-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.section-title {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    color: #303030;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.carousel-item img {
+    border-radius: 10px;
+}
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.custom-carousel-control {
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.col-md-3 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    margin: 130px 0 0 0; /* Added top margin */
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.5); /* Transparent overlay */
+    color: white;
+    text-align: center;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.video-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://landing.zytheme.com/interact/assets/images/background/bg-3.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7; /* Control transparency */
+    z-index: -1;
+}
+.play-button {
+    width: 60px; /* Set width */
+    height: 60px; /* Set height */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 40%; /* Make it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-size: 24px;
+}
+.text-after-button {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    z-index: 1;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.overlay iframe {
+    width: 80%;
+    height: 60%;
+    border: none;
+    border-radius: 8px;
+}
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.full-width-container {
+    width: 100%;
+    margin-top: 130px; /* Adjust top margin as needed */
+    background-color: #f6f5f57f;
+    padding: 20px;
+    border-radius: 0px;
+}
+.full-width-container h1{
+    font-family:cursive ;
+}
+.small-image {
+    max-width:30%; /* Maximum width */
+    width: 30%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 20px auto ; /* Center the image and add margin */
+}
+.btn-margin {
+    margin-top: 20px; /* Add top margin to buttons */
+}
+.btn-gap {
+    margin-right: 80px; /* Add bottom margin to create a gap between the buttons */
+}
+.button-container {
+    display: flex; /* Align items in a row */
+    gap: 15px; /* Space between buttons */
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    text-align: left;
+    border-radius: 10px;
+    background: linear-gradient(to right,  #e74c3c , #9b59b6); /* Gradient background */
+}
+.btn:hover {
+    background: rgba(0, 0, 0, 0.799) /* Darker gradient on hover */
+}
+.icon-large {
+    font-size: 2.9em; /* Increase icon size */
+    margin-right: 10px; /* Space between icon and text */
+    color:white;
+}
+
+
+.btn-text-bold {
+    display: inline-block; /* Allow line breaks inside the span */
+    font-size: 1.2em; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    white-space: normal; /* Allow text to wrap */
+    margin-top: 0px; /* Optional: Add space above the bold text */
+    color:white;
+}
+.image-top-margin {
+    margin-top: 100px; /* Adjust this value to increase/decrease the top margin */
+}
+.btn-text{
+    color:white;
+}
+.button-container{
+    margin-top: 60px;
+}
+
+/* shambhavi */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* General Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    z-index: 1030;
+    background-color: rgba(0, 0, 0, 0.6); /* 60% opacity */
+    transition: background-color 0.3s ease;
+}
+
+.navbar.fixed-top.scrolled {
+    background-color: rgba(0, 0, 0, 0.8); /* Translucent black when scrolled */
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #ffffff;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link.special {
+    font-weight: bold;
+    color: #f8f9fa; /* Slightly different color for special link */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Center the navbar items */
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #e9ecef; /* Lighter color on hover */
+}
+
+/* Responsive Toggler Icon */
+.navbar-toggler {
+    border: none;
+}
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+.btn-close-white {
+    filter: invert(1);
+}
+
+
+
+/* Header Styles */
+.header {
+    background-image: url('https://landing.zytheme.com/interact/assets/images/hero/hero-6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100vh;
+    color: white;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.cta-button:hover {
+    background-color: #302f2f;
+}
+
+.header-image img {
+    width: 80%;
+    height: auto;
+}
+
+
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.9); /* 90% opacity */
+}
+.navbar-nav .nav-link:hover {
+    color: red;
+}
