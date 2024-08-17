@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipping Cards with Slider and Navigation</title>
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        footer{
+            width: 100%;
+            margin-top: 120px;
+        }
+
+        .slider-container {
+            width: 100%;
+            max-width: 1200px;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            margin-top: 200px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 43px; /* Add space between slides */
+        }
+
+        .slide {
+            min-width: calc(100% - 20px); /* Account for the gap between slides */
+            box-sizing: border-box;
+        }
+
+        .container-a {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            perspective: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: transparent;
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; /* Makes the card square */
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.7s;
+        }
+
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            
+        }
+
+        .card-front {
+            background-color: #000000;
+        }
+
+        .card-back {
+            background-color: #009688;
+            transform: rotateY(180deg);
+        }
+
+        .card.flip .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .slider-controls {
+            
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .slider-controls button {
+            background-color: #000000;
+            border: 2px solid white;
+            
+            color: white;
+            justify-content: center;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 50px;
+            height: 50px;
+        }
+
+        .slider-controls button:hover {
+            border: none;
+            background-color: #f58153;
+        }
+        .header-container {
+            /* position: relative; */
+            /* width: 100%; */
+            /* max-width: 100%; */
+            /* margin-bottom: 20px; */
+            max-width: 1920px;
+            height: 550px;
+        }
+
+        .header-image {
+
+            max-width: 100%;
+            height: 100%;
+            
+            /* height: auto;
+            display: block; */
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .header-text {
+            font-size: 3.75rem;
+            line-height: 1;
+        }
+        .header-text-2 {
+            font-size: 400;
+           
+        }
+
+        .header-button {
+            background-color: #f58153;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            /* gap: 20px; Space between items */
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.326); /* Semi-transparent background */
+            backdrop-filter: blur(1px); /* Blurred background */
+            /* padding: 10px 20px; */
+            border-radius: 70px;
+        }
+
+        .header-list li {
+            display: inline-block;
+            /* background: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(10px);  */
+            padding: 0px 10px;
+            
+        }
+
+        .header-list a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .empty-div {
+        height: 70px; /* Adjust the height as needed */
+    }
+
+            
+
+
+        @media (max-width: 900px) {
+            .container-a {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container-a {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .slider-container {
+                max-width: 1500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="empty-div"></div>
+    <div class="header-container">
+        <img src="assets/img/breadcrumb.jpg" alt="Header Image" class="header-image">
+        <div class="header-overlay">
+            <ul class="header-list">
+                <li><a href="#">Home</a>
+                
+            </li>
+                <li><p class="header-text-2">Our Team</p></li>
+                
+            </ul>
+            <h1 class="header-text">Our Team</h1>
+        </div>
+    </div>
+    
+    
+    <div class="slider-container">
+        <div class="slider-track">
+            <div class="slide">
+                <div class="container-a">
+                    <!-- First set of 9 cards -->
+                    <div class="card" data-index="0">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="1">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="2">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="3">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="4">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="5">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="6">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="7">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="8">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="container-a">
+                    <!-- Second set of 9 cards -->
+                    <div class="card" data-index="9">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="10">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="11">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="12">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="13">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="14">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="15">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="16">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="17">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="container-a">
+                    <!-- Third set of 9 cards -->
+                    <div class="card" data-index="18">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="19">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="20">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="21">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="22">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="23">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="24">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="25">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                    <div class="card" data-index="26">
+                        <div class="card-inner">
+                            <div class="card-front"></div>
+                            <div class="card-back" style="background-image: url('assets/img/1.jpeg'); background-size: cover; background-position: center;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button id="prevBtn">&#10094;</button>
+        <button id="slide1Btn">1</button>
+        <button id="slide2Btn">2</button>
+        <button id="slide3Btn">3</button>
+        <button id="nextBtn">&#10095;</button>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="section-footer">
+        <div class="relative z-10 overflow-hidden bg-colorGreyDark">
+          <div class="section-space-top">
+            <div class="container">
+              <div class="mx-auto flex max-w-[989px] flex-wrap items-center justify-between gap-10">
+                <h2 class="text-7xl font-extrabold md:text-8xl lg:text-9xl xl:text-[150px]">
+                  Let’s Talk
+                </h2>
+                <a class="mx-auto inline-flex h-[110px] w-[110px] items-center justify-center rounded-[50%] border border-colorOrange text-colorOrange hover:scale-110 hover:bg-colorOrange hover:text-white xl:h-[126px] xl:w-[126px]" href="/contact">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="pb-[70px] pt-20 lg:pt-[100px] xl:pt-[130px]">
+            <div class="container">
+              <div class="flex flex-wrap items-center justify-center gap-10 lg:justify-between">
+                <!-- Footer Center Left Block -->
+                <div class="flex flex-wrap items-center justify-center gap-10 lg:justify-start xl:gap-[94px]">
+                  <a href="/">
+                    <img src="assets/img/logo.png" alt="logo-white" width="118" height="25" class="h-auto w-[118px]">
+                  </a>
+                  <form action="#" method="post" class="relative w-full sm:w-[424px]">
+                    <input type="text" name="email" id="emai" placeholder="Your Email" class="animate-transition mb-5 w-full border-b border-white/[12%] bg-colorGreyDark pb-4 text-white outline-none placeholder:text-white/[35%] focus:border-colorOrange focus:bg-colorGreyDark sm:mb-0 sm:pr-40" required="">
+                    <!-- Text Button start-->
+                    <button type="submit" class="btn group right-0 top-0 mx-auto flex items-center gap-x-3 border-b border-colorOrange pb-1 text-colorOrange sm:absolute sm:inline-flex">
+                      Subscribe Now
+                      <span class="relative flex items-center overflow-hidden">
+                        <img src="assets/img/icon/arrow.png" alt="arrow" width="24" height="12" class="animate-transition h-3 w-6 translate-x-0 group-hover:translate-x-full">
+                        <img src="assets/img/icon/arrow.png" alt="arrow" width="24" height="12" class="animate-transition absolute inset-0 h-3 w-6 -translate-x-full group-hover:translate-x-0">
+                      </span>
+                    </button>
+                    <!-- Text Button end-->
+                  </form>
+                </div>
+                <div class="flex gap-[14px]">
+                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="facebook" class="inline-flex h-14 w-14 items-center justify-center rounded-[50%] border border-white/[8%] bg-white/5 hover:bg-colorOrange">
+                    <img src="assets/img/icon/fb.png" alt="icon-white-facebook" width="24" height="24" class="h-auto w-6">
+                  </a>
+                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="instagram" class="inline-flex h-14 w-14 items-center justify-center rounded-[50%] border border-white/[8%] bg-white/5 hover:bg-colorOrange">
+                    <img src="assets/img/icon/insta.png" alt="icon-white-instagram-fill" width="24" height="24" class="h-auto w-6">
+                  </a>
+                  <a href="https://www.x.com" target="_blank" rel="noopener noreferrer" aria-label="x" class="inline-flex h-14 w-14 items-center justify-center rounded-[50%] border border-white/[8%] bg-white/5 hover:bg-colorOrange">
+                    <img src="assets/img/icon/twitter.png" alt="icon-white-x-fill" width="24" height="24" class="h-auto w-6">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Section Container -->
+          </div>
+          <div class="">
+            <div class="container">
+              <!-- Footer Nav -->
+              <ul class="flex flex-wrap justify-start gap-5 border border-white/[12%] p-8 md:p-10 xl:justify-between xl:p-[60px]">
+                <li>
+                  <a class="hover:text-colorOrange" href="/">HOME</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/about">ABOUT AGENCY</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/project">OUR WORK</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/team">TEAM MEMBER</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/service">SERVICES</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/contact">CONTACT US</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/faq">FAQ’s</a>
+                </li>
+                <li>
+                  <a class="hover:text-colorOrange" href="/blog">OUR INSIGHTS</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Section Container -->
+          </div>
+          <img src="assets/img/footer-bg.png" alt="team-bg" width="590" height="320" class="left0 absolute top-0 -z-10">
+        </div>
+      </footer>
+    <!-- Footer end -->
+
+    <script>
+        const sliderTrack = document.querySelector('.slider-track');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slide1Btn = document.getElementById('slide1Btn');
+        const slide2Btn = document.getElementById('slide2Btn');
+        const slide3Btn = document.getElementById('slide3Btn');
+        let currentSlide = 0;
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlider();
+            }
+        });
+
+        slide1Btn.addEventListener('click', () => {
+            currentSlide = 0;
+            updateSlider();
+        });
+
+        slide2Btn.addEventListener('click', () => {
+            currentSlide = 1;
+            updateSlider();
+        });
+
+        slide3Btn.addEventListener('click', () => {
+            currentSlide = 2;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const offset = -currentSlide * (100 + 1.67); /* Adjusted for gap between slides */
+            sliderTrack.style.transform = `translateX(${offset}%)`;
+        }
+
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (cardPosition < windowHeight && cardPosition > 0 && !card.classList.contains('flip')) {
+                    card.classList.add('flip');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
