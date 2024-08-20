@@ -338,5 +338,7 @@ body{
 }
 
 .header-image img {
-    transform: translate(0%, 5%);
+    height: auto;
+    width: 120%;
+    transform: translate(5%, 13%);
 }
