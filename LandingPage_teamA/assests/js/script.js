@@ -17,10 +17,6 @@ window.onscroll = function () {
 };
 
 
-
-
-
-
 // Functionality for rotating team members
 document.addEventListener('DOMContentLoaded', function () {
     const members = document.querySelectorAll('.team-member1');
@@ -98,19 +94,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    // Toggle navbar on button click
+    navbarToggler.addEventListener('click', function() {
+        var bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false
+        });
+        if (navbarCollapse.classList.contains('show')) {
+            bsCollapse.hide();
+            this.classList.remove('collapsed');
+        } else {
+            bsCollapse.show();
+            this.classList.add('collapsed');
+        }
+    });
 
-//for navbar
-window.addEventListener('scroll', function() {
-    var navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+    // Close the navbar when clicking outside of it
+    document.addEventListener('click', function(event) {
+        var isClickInside = document.querySelector('.navbar').contains(event.target);
+        
+        if (!isClickInside && navbarCollapse.classList.contains('show')) {
+            var bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
+            });
+            bsCollapse.hide();
+            navbarToggler.classList.remove('collapsed');
+        }
+    });
+
+    // Close the navbar when clicking the close icon
+    navbarCollapse.addEventListener('click', function(event) {
+        if (event.target.matches('.btn-close')) {
+            var bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
+            });
+            bsCollapse.hide();
+            navbarToggler.classList.remove('collapsed');
+        }
+    });
 });
-
-
-
 
 
 
