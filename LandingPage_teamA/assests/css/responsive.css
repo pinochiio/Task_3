@@ -1,14 +1,3 @@
-@media (min-width: 768px) {
-    .phone-placeholder {
-        height: 300px;
-    }
-}
-@media (max-width: 768px) {
-    .carousel-item .col-md-3 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
 @media (max-width: 800px) {
     .header-content {
         flex-direction: column;
@@ -23,4 +12,46 @@
         text-align: center;
     }
 }
+@media (min-width: 768px) {
+    .phone-placeholder {
+    height: 300px;
+    }
+    
+   }
+   @media (max-width: 768px) {
+    .carousel-slide {
+    flex: 0 0 50%; /* Show 2 slides per row on smaller screens */
+    
+    }
+   }
+   
+   
+   
+   @media (max-width: 480px) {
+    .carousel-slide {
+    flex: 0 0 100%; /* Show 1 slide per row on very small screens */
+    }
+   }
+   /* For screens 775px and above */
+   @media (min-width: 775px) {
+    .carousel-slider {
+    display: block; /* Show the main carousel */
+    }
+   }
+   @media (min-width: 775px) {
+    #slider2 {
+        display: none;
+    }
+}
+   /* For screens below 775px */
+   @media (max-width: 774px) {
+    .carousel-slider.hidden {
+    display: block; /* Show the alternative carousel */
+    }
+   }
+   @media (max-width: 775px) {
+    #slider1 {
+        display: none;
+    }
+} 
 
