@@ -280,18 +280,14 @@ body{
     color: #ffffff;
     padding: 0 15px;
     text-transform: uppercase;
-    background-color: rgba(0, 0, 0, 0.935); /* 60% opacity */
 }
+
 
 .navbar-nav .nav-link.special {
     font-weight: bold;
     color: #f8f9fa; /* Slightly different color for special link */
 }
 
-/* .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-} */
-/* Navbar styles */
 .navbar-toggler {
     border: none;
     transition: transform 0.3s ease-in-out;
@@ -370,6 +366,7 @@ body{
 }
 
 .header-image img {
-    width: 80%;
     height: auto;
+    width: 120%;
+    transform: translate(5%, 13%);
 }
