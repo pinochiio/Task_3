@@ -25,7 +25,7 @@ body {
     background-color: #E56C00;
     border-color: #E56C00;
 }
-
+/* Contact section */
 .contact-section {
     padding: 50px 20px;
     text-align: center;
@@ -73,26 +73,6 @@ body {
     text-align: left;
 }
 
-/* Contact Form Section */
-.contact-form {
-    flex-basis: 50%;
-    background-color: #d7e3d0;
-    padding: 30px;
-    border-radius: 8px;
-    text-align: left;
-}
-
-/* Form rows and groups */
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.form-group {
-    flex-basis: 48%;
-}
-
 .contact-info h3 {
     font-size: 20px;
     color: #333;
@@ -122,6 +102,26 @@ body {
 
 .contact-info a:active{
     color:green;
+}
+
+/* Contact Form Section */
+.contact-form {
+    flex-basis: 50%;
+    background-color: #d7e3d0;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Form rows and groups */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-group {
+    flex-basis: 48%;
 }
 
 .contact-form label {
