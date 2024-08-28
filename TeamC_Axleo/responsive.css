@@ -1,36 +1,79 @@
-/* Medium screens (tablets, 768px and below) */
-@media (max-width: 768px) {
-    .contact-info {
+@media (max-width: 991px) {
+    .contact-container {
+        margin: 20px;
+    }
+
+    .contact-container1 {
+        justify-content: center;
+    }
+
+    .contact-info,
+    .contact-form {
         flex-basis: 100%;
         margin-bottom: 20px;
     }
 
-    .contact-form {
-        padding: 40px; /* Reduces padding on smaller screens */
+    .contact-section h2 {
+        font-size: 40px;
+    }
+
+    .contact-section p {
+        font-size: 16px;
     }
 }
 
-/* Small screens (mobile, 480px and below) */
-@media (max-width: 480px) {
-    .contact-info {
-        flex-basis: 100%; /* Full width for each section */
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+    .contact-section h2 {
+        font-size: 35px;
     }
 
-    .contact-form {
-        padding: 20px; /* Further reduce padding */
+    .contact-section p {
+        font-size: 14px;
     }
 
-    .contact-form input[type="text"],
-    .contact-form input[type="email"],
-    .contact-form textarea {
-        padding: 8px; /* Smaller padding for inputs */
+    .contact-info h3 {
+        font-size: 18px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+    }
+
+    .form-group {
+        flex-basis: 100%;
     }
 
     .contact-form button {
-        padding: 10px;
-        font-size: 14px; /* Smaller font size for button text */
+        font-size: 14px;
+        padding: 8px;
     }
 }
+
+/* Extra small screens */
+@media (max-width: 576px) {
+    .contact-section h2 {
+        font-size: 30px;
+    }
+
+    .contact-section p {
+        font-size: 12px;
+    }
+
+    .contact-info h3 {
+        font-size: 16px;
+    }
+
+    .contact-info p {
+        font-size: 12px;
+    }
+
+    .contact-form button {
+        font-size: 12px;
+        padding: 7px;
+    }
+}
+
 /* Media Queries for 480px and below */
 @media (max-width: 480px) {
     footer h2 {
